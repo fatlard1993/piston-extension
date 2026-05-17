@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"facing=north": { "model": "piston-extension:block/piston_shaft", "y": 180 },
+		"facing=south": { "model": "piston-extension:block/piston_shaft" },
+		"facing=east": { "model": "piston-extension:block/piston_shaft", "y": 270 },
+		"facing=west": { "model": "piston-extension:block/piston_shaft", "y": 90 },
+		"facing=up": { "model": "piston-extension:block/piston_shaft", "x": 270 },
+		"facing=down": { "model": "piston-extension:block/piston_shaft", "x": 90 }
+	}
+}

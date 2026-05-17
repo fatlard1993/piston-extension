@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"package": "com.example.pistonextension.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"PistonBaseBlockMixin",
+		"PistonHeadBlockMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

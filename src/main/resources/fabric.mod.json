@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "piston-extension",
+	"version": "${version}",
+	"name": "Piston Extension",
+	"description": "Allows pistons to extend 1-3 blocks by right-clicking to cycle extension length.",
+	"authors": [
+		"justfatlard"
+	],
+	"license": "MIT",
+	"icon": "assets/piston-extension/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.example.pistonextension.PistonExtension"
+		]
+	},
+	"mixins": [
+		"piston-extension.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.5",
+		"minecraft": "~26.1",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
