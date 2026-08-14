@@ -1,6 +1,6 @@
-package com.example.pistonextension.mixin;
+package justfatlard.piston_extension.mixin;
 
-import com.example.pistonextension.PistonExtension;
+import justfatlard.piston_extension.PistonExtension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -34,7 +34,7 @@ public class PistonHeadBlockMixin {
 	}
 
 	/**
-	 * Vanilla ignores the moved parameter entirely — it always destroys the
+	 * Vanilla ignores the moved parameter entirely: it always destroys the
 	 * piston base when the head is removed. Respect the flag so our mod can
 	 * safely remove heads without destroying the base.
 	 */

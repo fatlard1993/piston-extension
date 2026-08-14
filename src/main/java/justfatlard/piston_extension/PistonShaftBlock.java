@@ -1,6 +1,5 @@
-package com.example.pistonextension;
+package justfatlard.piston_extension;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
@@ -16,8 +15,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class PistonShaftBlock extends DirectionalBlock {
-	public static final MapCodec<PistonShaftBlock> CODEC = simpleCodec(PistonShaftBlock::new);
-
 	private static final VoxelShape SHAPE_Z = Block.box(6, 6, 0, 10, 10, 16);
 	private static final VoxelShape SHAPE_X = Block.box(0, 6, 6, 16, 10, 10);
 	private static final VoxelShape SHAPE_Y = Block.box(6, 0, 6, 10, 16, 10);
@@ -25,11 +22,6 @@ public class PistonShaftBlock extends DirectionalBlock {
 	public PistonShaftBlock(Properties properties) {
 		super(properties);
 		registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH));
-	}
-
-	@Override
-	public MapCodec<PistonShaftBlock> codec() {
-		return CODEC;
 	}
 
 	@Override

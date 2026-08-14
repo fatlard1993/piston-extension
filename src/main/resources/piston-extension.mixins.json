@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "com.example.pistonextension.mixin",
+	"package": "justfatlard.piston_extension.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
 		"PistonBaseBlockMixin",

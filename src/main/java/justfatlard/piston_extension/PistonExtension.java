@@ -1,4 +1,4 @@
-package com.example.pistonextension;
+package justfatlard.piston_extension;
 
 import java.util.ArrayList;
 
@@ -40,7 +40,7 @@ public class PistonExtension implements ModInitializer {
 						.setId(shaftKey)
 						.strength(1.5f)
 						.noOcclusion()
-						.pushReaction(PushReaction.BLOCK)));
+						.pushReaction(PushReaction.IMMOVEABLE)));
 		UseBlockCallback.EVENT.register(this::onUseBlock);
 	}
 

@@ -1,4 +1,4 @@
-package com.example.pistonextension;
+package justfatlard.piston_extension;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -16,8 +16,6 @@ import java.util.Map;
 /**
  * Persistent saved data that stores per-piston extension lengths.
  * Keys are encoded BlockPos values (as longs), values are extension lengths (1-3).
- *
- * Uses the 26.1 Codec-based SavedDataType API for serialization.
  *
  * Note: Entries are cleaned up lazily. When a piston is destroyed, its
  * entry remains until the next time something queries or sets it.

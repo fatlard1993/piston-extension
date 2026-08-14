@@ -1,7 +1,7 @@
-package com.example.pistonextension.mixin;
+package justfatlard.piston_extension.mixin;
 
-import com.example.pistonextension.PistonExtension;
-import com.example.pistonextension.PistonExtensionData;
+import justfatlard.piston_extension.PistonExtension;
+import justfatlard.piston_extension.PistonExtensionData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
