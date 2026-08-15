@@ -2,6 +2,8 @@ package justfatlard.piston_extension;
 
 import java.util.ArrayList;
 
+import justfatlard.pandorical.api.BlockRegistration;
+import justfatlard.pandorical.api.PandoricalApi;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.core.BlockPos;
@@ -33,6 +35,14 @@ public class PistonExtension implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		if (PandoricalApi.isAvailable()) {
+			PandoricalApi.content().registerBlock(MOD_ID + ":piston_shaft", new BlockRegistration()
+					.baseBlock("minecraft:piston_head")
+					.property("facing")
+					.model(MOD_ID + ":block/piston_shaft"));
+			PandoricalApi.content().registerModAssets(MOD_ID);
+		}
+
 		ResourceKey<Block> shaftKey = ResourceKey.create(Registries.BLOCK,
 				Identifier.fromNamespaceAndPath(MOD_ID, "piston_shaft"));
 		PISTON_SHAFT = Registry.register(BuiltInRegistries.BLOCK, shaftKey,
