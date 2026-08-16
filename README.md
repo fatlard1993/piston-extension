@@ -10,12 +10,6 @@ A Fabric mod that lets a regular or sticky piston extend up to 3 blocks instead 
 - Extension length is persisted per-piston (survives world reloads) via a `SavedData`-backed store
 - Respects vanilla pushable/block-count rules when extending: a push that would fail on a vanilla piston (unmovable blocks, too many blocks in the chain) still fails here
 
-## Requirements
-
-- Targets the Minecraft, Fabric Loader, and Fabric API versions declared in this mod's `gradle.properties`. Check there for the exact currently-supported version
-- Java version as declared in `fabric.mod.json`'s `depends` block
-- Pandorical (see below)
-
 ## Pandorical
 
 Piston Extension runs server-side, and Pandorical is a hard dependency (`fabric.mod.json`): the server will not load this mod without it. The Piston Shaft is registered as a Pandorical content block and its assets are synced from this jar.
@@ -24,8 +18,8 @@ Clients are the optional half. A player on a Pandorical client sees the shaft; b
 
 ## Installation
 
-Install server-side alongside its declared dependencies (see `fabric.mod.json`). Connecting clients need only Pandorical.
+Install server-side alongside its declared dependencies (see `fabric.mod.json`); connecting clients need only Pandorical. Version targets live in `gradle.properties` (Minecraft, loader, Fabric API) and `fabric.mod.json` (Java).
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT, see [LICENSE](LICENSE).
