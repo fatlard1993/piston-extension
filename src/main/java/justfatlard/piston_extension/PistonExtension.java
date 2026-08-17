@@ -35,6 +35,11 @@ public class PistonExtension implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+      // Guarded class load: the tip registration names block-tip types.
+      if (net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("block-tip")) {
+         justfatlard.piston_extension.integration.PistonTipRegistration.register();
+      }
+
 		// Guarded class load: PistonQuestRegistration names village-quests types.
 		if (net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("village-quests-justfatlard")) {
 			justfatlard.piston_extension.integration.PistonQuestRegistration.register();
