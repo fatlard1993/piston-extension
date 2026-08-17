@@ -10,6 +10,14 @@ A Fabric mod that lets a regular or sticky piston extend up to 3 blocks instead 
 - Extension length is persisted per-piston (survives world reloads) via a `SavedData`-backed store
 - Respects vanilla pushable/block-count rules when extending: a push that would fail on a vanilla piston (unmovable blocks, too many blocks in the chain) still fails here
 
+## Learning It
+
+Right-clicking a piston cycles how far it pushes, and there is nothing to find: no recipe, no item, no particle. The block looks identical at every setting, so the only way anyone learns this is being told.
+
+With [village-quests](https://github.com/justfatlard/village-quests) installed, a mason or toolsmith wants a gate that actually opens and asks you to set a piston to a reach of three. One is what a piston already does and two could be an accident; three is unmistakably somebody who knows.
+
+Optional and guarded: without village-quests the mod behaves exactly as before.
+
 ## Pandorical
 
 Piston Extension runs server-side, and Pandorical is a hard dependency (`fabric.mod.json`): the server will not load this mod without it. The Piston Shaft is registered as a Pandorical content block and its assets are synced from this jar.

@@ -24,5 +24,8 @@
 		"java": ">=25",
 		"fabric-api": "*",
 		"pandorical": "*"
+	},
+	"suggests": {
+		"village-quests-justfatlard": "*"
 	}
 }
