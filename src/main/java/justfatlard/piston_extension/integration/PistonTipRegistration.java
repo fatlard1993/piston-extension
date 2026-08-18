@@ -22,7 +22,7 @@ public final class PistonTipRegistration {
 
 			int reach = PistonExtensionData.get(serverLevel).getExtensionLength(pos);
 			// One is what every piston does, so saying it is noise.
-			return reach <= 1 ? null : "Pushes " + reach + " blocks";
+			return reach <= 1 ? null : "Pushes " + reach;
 		});
 	}
 }
