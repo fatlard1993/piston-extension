@@ -14,7 +14,7 @@ A Fabric mod that lets a regular or sticky piston extend up to 3 blocks instead 
 
 Right-clicking a piston cycles how far it pushes, and there is nothing to find: no recipe, no item, no particle. The block looks identical at every setting, so the only way anyone learns this is being told.
 
-With [village-quests](https://github.com/justfatlard/village-quests) installed, a mason or toolsmith wants a gate that actually opens and asks you to set a piston to a reach of three. One is what a piston already does and two could be an accident; three is unmistakably somebody who knows.
+With [village-quests](https://github.com/fatlard1993/village-quests) installed, a mason or toolsmith wants a gate that actually opens and asks you to set a piston to a reach of three. One is what a piston already does and two could be an accident; three is unmistakably somebody who knows.
 
 Optional and guarded: without village-quests the mod behaves exactly as before.
 
