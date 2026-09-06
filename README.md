@@ -20,13 +20,13 @@ Optional and guarded: without village-quests the mod behaves exactly as before.
 
 ## Pandorical
 
-Piston Extension runs server-side, and Pandorical is a hard dependency (`fabric.mod.json`): the server will not load this mod without it. The Piston Shaft is registered as a Pandorical content block and its assets are synced from this jar.
+Piston Extension runs server-side, and Pandorical is required: the server will not load this mod without it. The Piston Shaft is registered as a Pandorical content block and its assets are synced from this jar.
 
 Clients are the optional half. A player on a Pandorical client sees the shaft; because it is a real registered block, a vanilla client cannot render it and cannot receive chunks containing one. Extension length, sticky behaviour and the push rules are all server-side and unaffected.
 
-## Installation
+## Development
 
-Install server-side alongside its declared dependencies (see `fabric.mod.json`); connecting clients need only Pandorical. Version targets live in `gradle.properties` (Minecraft, loader, Fabric API) and `fabric.mod.json` (Java).
+Installing is in [DEVELOPMENT.md](DEVELOPMENT.md).
 
 ## License
 
