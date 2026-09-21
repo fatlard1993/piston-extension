@@ -1,0 +1,15 @@
+{
+	"overview": [
+		"Pistons that push up to three blocks instead of one. Right-click a powered piston with an empty hand to cycle how far it reaches."
+	],
+	"versions": {
+		"1.0.1": [
+			"The tip card says how far this one pushes, which is the one thing about a piston you cannot see from the outside, and it stays quiet at a reach of one.",
+			"A mason's lesson asks for a reach of three, so somebody finds out the trick is there at all."
+		],
+		"1.0.0": [
+			"A regular or sticky piston extends one, two or three blocks, cycled by hand, and the setting sticks across reloads.",
+			"A Piston Shaft fills the gap between base and head, sticky pistons still pull the block back, and a push that would fail on a vanilla piston still fails here."
+		]
+	}
+}
