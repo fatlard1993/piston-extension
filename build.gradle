@@ -60,6 +60,23 @@ dependencies {
 		compileOnly files(villageQuestsJar)
 	}
 
+	// Optional: xp-crush integration, compile-only and never bundled, resolved the same way.
+	def xpCrushProperties = file("../xp-crush/gradle.properties")
+	if (xpCrushProperties.exists()) {
+		def xpCrushVersion = new Properties().with {
+			xpCrushProperties.withInputStream { load(it) }
+			getProperty("mod_version")
+		}
+		def xpCrushJar = file("../xp-crush/build/libs/xp-crush-${xpCrushVersion}.jar")
+		if (!xpCrushJar.exists()) {
+			throw new GradleException("xp-crush ${xpCrushVersion} is not built. Run `mc-build xp-crush`" +
+				" (or ./gradlew build in ../xp-crush) first - this mod compiles against its API.")
+		}
+		compileOnly files(xpCrushJar)
+		// In the tests, so a long reach is seen crushing as well as shoving.
+		gametestRuntimeOnly files(xpCrushJar)
+	}
+
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 
 	implementation "net.fabricmc:fabric-loader:${project.loader_version}"

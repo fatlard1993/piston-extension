@@ -8,6 +8,7 @@ A Fabric mod that lets a regular or sticky piston extend up to 3 blocks instead 
 - Works on both regular and sticky pistons: sticky pistons pull the block back when retracting, and re-adjusting length while extended repositions any stuck block accordingly
 - Adds an intermediate **Piston Shaft** block that fills the gap between the piston base and its head when extended more than 1 block; it behaves as an inert, unmovable connector and is removed automatically when the piston retracts
 - Extension length is persisted per-piston (survives world reloads) via a `SavedData`-backed store
+- Shoves whatever is in the way out ahead of the head, as a vanilla piston does; anything with something solid ahead of it stays pinned, and with [xp-crush](https://github.com/fatlard1993/xp-crush) installed a pinned item is crushed for experience
 - Respects vanilla pushable/block-count rules when extending: a push that would fail on a vanilla piston (unmovable blocks, too many blocks in the chain) still fails here
 
 ## Learning It

@@ -27,7 +27,8 @@
 	},
 	"suggests": {
 		"village-quests-justfatlard": "*",
-		"block-tip": "*"
+		"block-tip": "*",
+		"xp-crush": "*"
 	},
 	"contact": {
 		"homepage": "https://github.com/fatlard1993/piston-extension",

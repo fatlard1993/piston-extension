@@ -17,6 +17,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -27,7 +29,9 @@ import net.minecraft.world.level.block.piston.PistonHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.PistonType;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 
 public class PistonExtension implements ModInitializer {
 	public static final String MOD_ID = "piston-extension";
@@ -78,6 +82,7 @@ public class PistonExtension implements ModInitializer {
 
 	public static boolean placeExtension(ServerLevel level, BlockPos pistonPos,
 			Direction facing, int length, boolean sticky) {
+		int filled = length;
 
 		ArrayList<BlockState> displaced = new ArrayList<>();
 		for (int i = 1; i <= length; i++) {
@@ -105,6 +110,7 @@ public class PistonExtension implements ModInitializer {
 			}
 
 			if (displaced.size() + beyondChain > 12) return false;
+			filled = length + displaced.size() + beyondChain;
 
 			for (int i = beyondChain - 1; i >= 0; i--) {
 				BlockPos from = offsetPos(pistonPos, facing, length + 1 + i);
@@ -133,7 +139,44 @@ public class PistonExtension implements ModInitializer {
 			}
 		}
 
+		shove(level, pistonPos, facing, filled);
 		return true;
+	}
+
+	/**
+	 * Everything in the way shoved out ahead of the blocks now standing in front of the piston,
+	 * as a vanilla piston shoves it. The blocks here are set down at once rather than moved, so
+	 * the game never pushes anything for them: without this a mob or a player is simply left
+	 * inside the head, and a dropped item sits in it.
+	 *
+	 * <p>What cannot be shoved clear, because something solid stands ahead of it, stays where it
+	 * is, pinned: a mob suffocates as it would against a wall, and an item, where xp-crush is
+	 * installed, is crushed.
+	 *
+	 * @param filled how many blocks out from the piston are now taken, its head, its shafts and
+	 *     every block it pushed
+	 */
+	static void shove(ServerLevel level, BlockPos pistonPos, Direction facing, int filled) {
+		AABB taken = new AABB(offsetPos(pistonPos, facing, 1)).minmax(new AABB(offsetPos(pistonPos, facing, filled)));
+		BlockPos front = offsetPos(pistonPos, facing, filled);
+		for (Entity entity : level.getEntities((Entity) null, taken, entity -> !entity.isSpectator() && entity.getPistonPushReaction() != PushReaction.IGNORE_ENTITY)) {
+			AABB box = entity.getBoundingBox();
+			// From the edge of the entity nearest the piston to the face of the front block.
+			double gap = switch (facing.getAxisDirection()) {
+				case POSITIVE -> front.get(facing.getAxis()) + 1 - box.min(facing.getAxis());
+				case NEGATIVE -> box.max(facing.getAxis()) - front.get(facing.getAxis());
+			};
+			if (gap <= 0) continue;
+			double step = gap + 0.01;
+			Vec3 move = new Vec3(facing.getStepX() * step, facing.getStepY() * step, facing.getStepZ() * step);
+			if (level.noCollision(entity, box.move(move))) {
+				entity.setPos(entity.position().add(move));
+				entity.needsSync = true;
+			} else if (entity instanceof ItemEntity item
+					&& net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("xp-crush")) {
+				justfatlard.piston_extension.integration.CrushIntegration.pinned(level, item, filled);
+			}
+		}
 	}
 
 	public static BlockPos offsetPos(BlockPos pos, Direction dir, int distance) {
