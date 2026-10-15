@@ -19,13 +19,9 @@ With [village-quests](https://github.com/fatlard1993/village-quests) installed, 
 
 With [block-tip](https://github.com/fatlard1993/block-tip) installed, looking at a piston set to 2 or 3 shows "Pushes 2" or "Pushes 3". A piston at 1 shows nothing, since that is what every piston does.
 
-Both are optional and guarded: without them the mod behaves exactly as before.
-
 ## Pandorical
 
-Piston Extension runs server-side, and Pandorical is required: the server will not load this mod without it. The Piston Shaft is registered as a Pandorical content block and its assets are synced from this jar.
-
-Clients are the optional half. A player on a Pandorical client sees the shaft; because it is a real registered block, a vanilla client cannot render it and cannot receive chunks containing one. Extension length, sticky behaviour and the push rules are all server-side and unaffected.
+Piston Extension goes on the server only, and **Pandorical is required there and on every player's client**: the Piston Shaft is a new block, and a client without Pandorical has no entry for it.
 
 ## Development
 
