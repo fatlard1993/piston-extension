@@ -34,5 +34,12 @@
 		"homepage": "https://github.com/fatlard1993/piston-extension",
 		"sources": "https://github.com/fatlard1993/piston-extension",
 		"issues": "https://github.com/fatlard1993/piston-extension/issues"
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.donate": "https://github.com/sponsors/fatlard1993"
+			}
+		}
 	}
 }
