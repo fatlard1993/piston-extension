@@ -3,6 +3,9 @@
 		"Pistons that push up to three blocks instead of one. Right-click a powered piston with an empty hand to cycle how far it reaches."
 	],
 	"versions": {
+		"1.1.3": [
+			"A demo to play in PvP Dimensions' onboarding."
+		],
 		"1.1.2": [
 			"Drop changelog notes for changes nothing in the game shows."
 		],
