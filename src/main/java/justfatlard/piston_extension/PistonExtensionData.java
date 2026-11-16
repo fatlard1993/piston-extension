@@ -18,9 +18,8 @@ import java.util.Map;
  * Keys are encoded BlockPos values (as longs), values are extension lengths (1-3).
  *
  * Note: Entries are cleaned up lazily. When a piston is destroyed, its
- * entry remains until the next time something queries or sets it.
- * This avoids the complexity of hooking into block removal events on
- * classes that may not declare the removal method directly.
+ * entry remains until another piston is placed or pushed into that spot,
+ * which clears it (PistonBaseBlock declares onPlace but not a removal hook).
  */
 public class PistonExtensionData extends SavedData {
 

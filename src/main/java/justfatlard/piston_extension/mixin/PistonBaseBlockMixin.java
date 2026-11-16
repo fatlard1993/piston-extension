@@ -24,6 +24,15 @@ public abstract class PistonBaseBlockMixin {
 	@Final
 	private boolean isSticky;
 
+	/** A piston new to this spot, placed or pushed in, starts at one block, whatever stood here before. */
+	@Inject(method = "onPlace", at = @At("HEAD"))
+	private void pistonExtension$forgetPreviousLength(
+			BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston, CallbackInfo ci) {
+		if (!oldState.is(state.getBlock()) && level instanceof ServerLevel serverLevel) {
+			PistonExtensionData.get(serverLevel).removeEntry(pos);
+		}
+	}
+
 	@Inject(method = "checkIfExtend", at = @At("HEAD"), cancellable = true)
 	private void pistonExtension$onCheckIfExtend(
 			Level level, BlockPos pos, BlockState state, CallbackInfo ci) {
